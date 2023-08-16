@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Términos y Condiciones - Andylu Papelería</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .terms-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .terms-container h1 {
+      color: #f60;
+      margin-bottom: 20px;
+    }
+
+    .terms-text {
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .button-back {
+      display: inline-block;
+      background-color: #f60;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      margin-top: 20px;
+      transition: background-color 0.2s ease;
+    }
+
+    .button-back:hover {
+      background-color: #d95000;
+    }
+  </style>
+</head>
+<body>
+  <div class="terms-container">
+    <h1>Términos y Condiciones - Andylu Papelería</h1>
+    <p class="terms-text">
+      Bienvenido a la tienda en línea de Andylu Papelería. Al utilizar nuestro sitio web, usted acepta cumplir con los siguientes términos y condiciones.
+    </p>
+    <p class="terms-text">
+      <strong>Reglas Generales:</strong>
+      <br>
+      - No está permitido realizar pedidos falsos o fraudulentos.
+      <br>
+      - No robar ni copiar el contenido, imágenes o productos del sitio.
+      <br>
+      - No realizar acciones que puedan perjudicar el negocio o afectar a otros usuarios.
+    </p>
+    <p class="terms-text">
+      <strong>Valores y Respeto:</strong>
+      <br>
+      - Respete los derechos de propiedad intelectual de otros.
+      <br>
+      - Trate a los demás con cortesía y consideración en todas las interacciones.
+      <br>
+      - No utilice lenguaje ofensivo, discriminatorio o inapropiado en los comentarios o comunicaciones.
+    </p>
+    <p class="terms-text">Le agradecemos por elegir a Andylu Papelería como su proveedor. Esperamos brindarle una experiencia positiva y satisfactoria.</p>
+    <a href="{{ url_for('login') }}" class="button-back">Regresar</a>
+  </div>
+</body>
+</html>

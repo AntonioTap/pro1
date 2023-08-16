@@ -1,0 +1,369 @@
+<!-- 
+* Copyright 2023 AnS
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Administrador</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/sweetalert2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/material.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/material-design-iconic-font.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/main.css') }}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="admin/js/jquery-1.11.2.min.js") }}"><\/script>')</script>
+    <script src="{{ url_for('static', filename='admin/js/material.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='admin/js/sweetalert2.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='admin/js/jquery.mCustomScrollbar.concat.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='admin/js/main.js') }}" ></script>
+
+	    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        button.cancel-button {
+            background-color: #4CAF50; /* Use the same color as 'Guardar cambios' */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button.cancel-button:hover {
+            background-color: #3e8e41; /* Hover color */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+	<!-- Notifications area -->
+	<section class="full-width container-notifications">
+		<div class="full-width container-notifications-bg btn-Notification"></div>
+		<section class="NotificationArea">
+			<div class="full-width text-center NotificationArea-title tittles">Notifications <i class="zmdi zmdi-close btn-Notification"></i></div>
+			<a href="#" class="Notification" id="notifation-unread-1">
+				<div class="Notification-icon"><i class="zmdi zmdi-accounts-alt bg-info"></i></div>
+				<div class="Notification-text">
+					<p>
+						<i class="zmdi zmdi-circle"></i>
+						<strong>New User Registration</strong> 
+						<br>
+						<small>Just Now</small>
+					</p>
+				</div>
+				<div class="mdl-tooltip mdl-tooltip--left" for="notifation-unread-1">Notification as UnRead</div> 
+			</a>
+
+		</section>
+	</section>
+	<!-- navLateral -->
+	<section class="full-width navLateral">
+		<div class="full-width navLateral-bg btn-menu"></div>
+		<div class="full-width navLateral-body">
+			<div class="full-width navLateral-body-logo text-center tittles">
+				<i class="zmdi zmdi-close btn-menu"></i> ANDYLU 
+			</div>
+			<figure class="full-width navLateral-body-tittle-menu">
+				<div>
+					<img src="{{url_for('static', filename='admin/assets/img/avatar-male.png')}}" alt="Avatar" class="img-responsive">
+				</div>
+				<figcaption>
+					<span>
+						AnS<br>
+						<small>Admin</small>
+					</span>
+				</figcaption>
+			</figure>
+			<nav class="full-width">
+				<ul class="full-width list-unstyle menu-principal">
+					<li class="full-width">
+						<a href="/admin" class="full-width">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-view-dashboard"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								Inicio
+							</div>
+						</a>
+					</li>
+					<li class="full-width divider-menu-h"></li>
+					<li class="full-width">
+						<a href="#!" class="full-width btn-subMenu">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-case"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								Compras
+							</div>
+							<span class="zmdi zmdi-chevron-left"></span>
+						</a>
+						<ul class="full-width menu-principal sub-menu-options">
+							<li class="full-width">
+								<a href="/nueva_compra" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-card"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Registrar Compras
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="/lista_compras" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-label"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Lista Compras
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="/nuevo_producto" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-card"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Nuevo Producto
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="/lista_productos" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-label"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Lista Productos
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="/nueva_categoria" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-card"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Nueva Categoría
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="/lista_categorias" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-label"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Lista Categoría
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="/nueva_marca" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-card"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Nueva Marca
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="/lista_marcas" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-label"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Lista Marca
+									</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="full-width divider-menu-h"></li>
+					<li class="full-width">
+						<a href="#!" class="full-width btn-subMenu">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-face"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								Usuarios
+							</div>
+							<span class="zmdi zmdi-chevron-left"></span>
+						</a>
+						<ul class="full-width menu-principal sub-menu-options">
+							<li class="full-width">
+								<a href="/nuevo_usuario" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-account"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Nuevo Usuario 
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="/lista_usuarios" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-accounts"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Lista Empleados
+									</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="full-width divider-menu-h"></li>
+					<li class="full-width">
+						<a href="/num_ventas" class="full-width">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-shopping-cart"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								Ventas 
+							</div>
+						</a>
+						<li class="full-width divider-menu-h"></li>
+						<li class="full-width">
+							<a href="/inventario1" class="full-width">
+								<div class="navLateral-body-cl">
+									<i class="zmdi zmdi-store"></i>
+								</div>
+								<div class="navLateral-body-cr">
+									Inventario
+								</div>
+							</a>
+						</li>
+						<li class="full-width divider-menu-h"></li>
+						<li class="full-width">
+							<a href="/help1" class="full-width">
+								<div class="navLateral-body-cl">
+									<i class="zmdi zmdi-wrench"></i>
+								</div>
+								<div class="navLateral-body-cr">
+									Ayuda
+								</div>
+							</a>
+						</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+	<!-- pageContent -->
+	<section class="full-width pageContent">
+		<!-- navBar -->
+		<div class="full-width navBar">
+			<div class="full-width navBar-options">
+				<i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>	
+				<div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
+				<nav class="navBar-options-list">
+					<ul class="list-unstyle">
+						<li class="btn-Notification" id="notifications">
+							<i class="zmdi zmdi-notifications"></i>
+							<div class="mdl-tooltip" for="notifications">Notificaciones</div>
+						</li>
+						<li class="btn-exit" id="btn-exit">
+							<i class="zmdi zmdi-power"></i>
+							<div class="mdl-tooltip" for="btn-exit">Salir</div>
+						</li>
+						<li class="text-condensedLight noLink" ><small>AnS</small></li>
+						<li class="noLink">
+							<figure>
+								<img src="{{url_for('static', filename='admin/assets/img/avatar-male.png')}}" alt="Avatar" class="img-responsive">
+							</figure>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+        <section class="full-width header-well">
+            <div class="full-width header-well-icon">
+                <i class="zmdi zmdi-truck"></i>
+            </div>
+            <div class="full-width header-well-text">
+                <p class="text-condensedLight">
+                    Editar Usuario
+                </p>
+            </div>
+        </section>
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+                <a href="#tabEditUser" class="mdl-tabs__tab is-active">EDITAR</a>
+            </div>
+    <table>
+		<tr>
+			<td colspan="2">
+				<form method="POST">
+					<input type="hidden" name="id" value="{{ usuario.id }}">
+		
+					<label for="nombre">Nombre:</label>
+					<input type="text" name="nombre" value="{{ usuario.nombre }}" required>
+		
+					<label for="apet_pat">Apellido Paterno:</label>
+					<input type="text" id="apet_pat" name="apet_pat" value="{{ usuario.apet_pat }}" required><br>
+		
+					<label for="ape_mat">Apellido Materno:</label>
+					<input type="text" id="ape_mat" name="ape_mat" value="{{ usuario.ape_mat }}" required><br>
+		
+					<label for="telefono">Teléfono:</label>
+					<input type="text" id="telefono" name="telefono" value="{{ usuario.telefono }}" required><br>
+		
+					<label for="direccion">Dirección:</label>
+					<input type="text" id="direccion" name="direccion" value="{{ usuario.direccion }}" required><br>
+		
+					<label for="correo">Correo:</label>
+					<input type="text" id="correo" name="correo" value="{{ usuario.correo }}" required><br>
+		
+					<label for="contraseña">Contraseña:</label>
+					<input type="password" id="contraseña" name="contraseña" value="{{ usuario.contraseña }}" required><br>
+		
+					<label for="id_rol">Rol:</label>
+					<select id="id_rol" name="id_rol" required>
+						<option value="1" {% if usuario.id_rol == 1 %}selected{% endif %}>Administrador</option>
+						<option value="2" {% if usuario.id_rol == 2 %}selected{% endif %}>Cajero</option>
+					</select><br>
+					<button type="submit" name="guardar" value="1">Guardar cambios</button>
+					<button type="button" class="cancel-button" onclick="window.location.href='/lista_usuarios'">Cancelar</button>
+				</form>
+			</td>
+		</tr>
+    </table>
+</section>
+</body>
+</html>

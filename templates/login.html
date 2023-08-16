@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .login-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .login-container h1 {
+      text-align: center;
+      color: #f60;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login-form label {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .login-form input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    .login-form input[type="submit"] {
+      background-color: #f60;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .login-form input[type="submit"]:hover {
+      background-color: #d95000;
+    }
+
+    .login-form p {
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .login-form p a {
+      color: #f60;
+      text-decoration: none;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-right: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .checkbox.checked {
+      background-color: #f60;
+    }
+
+    .checkbox-text {
+      font-size: 14px;
+    }
+  
+    /* Estilos para el enlace "Aceptar Términos y Condiciones" */
+.terms-link {
+  font-size: 14px;
+  color: #f60;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.terms-link:hover {
+  color: #d95000;
+}
+
+/* Estilos para el enlace "Cancelar" */
+.button-cancel {
+  display: inline-block;
+  background-color: #f60;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 10px auto; /* Centrar horizontalmente */
+  transition: background-color 0.2s ease;
+}
+
+.button-cancel:hover {
+  background-color: #d95000;
+}
+
+  </style>
+
+
+</head>
+  <div class="login-container">
+    <h1>Iniciar sesión</h1>
+    <form class="login-form" action="/login" method="post" onsubmit="return validarFormulario()">
+      <label for="correo">Correo:</label>
+      <input type="text" name="correo" required>
+      <br>
+      <label for="contraseña">Contraseña:</label>
+      <input type="password" name="contraseña" required>
+      <br>
+      <div class="checkbox-container">
+        <div class="checkbox" onclick="toggleCheckbox()"></div>
+        <a href="{{ url_for('terminos') }}" class="terms-link">Aceptar Términos y Condiciones</a>
+      </div>
+      <br>
+      <input type="submit" value="Iniciar sesión" id="login-button">
+      <a href="{{ url_for('inicio') }}" class="button-cancel">Cancelar</a>
+    </form>
+  </div>
+  <script>
+    let checkboxChecked = false;
+
+    function toggleCheckbox() {
+      const checkbox = document.querySelector('.checkbox');
+      checkboxChecked = !checkboxChecked;
+      checkbox.classList.toggle('checked', checkboxChecked);
+    }
+
+    function validarFormulario() {
+      if (!checkboxChecked) {
+        alert('Debes aceptar los Términos y Condiciones para continuar.');
+        return false;
+      }
+      
+      // Verificamos si la casilla está marcada antes de enviar el formulario
+      const loginButton = document.getElementById('login-button');
+      if (!loginButton) {
+        return false; // Botón no encontrado, cancelamos el envío del formulario
+      }
+      
+      return true;
+    }
+  </script>
+
+</body>
+</html>

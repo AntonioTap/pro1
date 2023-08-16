@@ -1,0 +1,332 @@
+
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilos para la barra de navegación */
+nav {
+  background-color: #504f4f;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav a {
+  color: #cbcbcb;
+  text-decoration: none;
+  font-size: 20px; 
+  font-weight: bold;
+  padding: 10px 15px; 
+}
+
+nav h2 {
+  color: rgb(236, 107, 47);
+  margin: 0;
+  font-size: 24px; 
+}
+
+nav .login-link {
+  background-color:rgb(236, 107, 47);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px; 
+  padding: 10px 20px; 
+}
+
+/* Estilos para las secciones */
+section {
+  padding: 60px 20px; 
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 60px);
+}
+
+
+#inicio {
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 120px;
+  background-color: #f0f0f0;
+}
+
+#inicio .image-container {
+  flex-basis: 50%;
+  text-align: center;
+}
+
+#inicio img {
+  max-width: 100%;
+  height: auto;
+  max-height: 50vh;
+  margin-bottom: 20px;
+}
+
+#inicio .text-container {
+  flex-basis: 50%;
+  text-align: center;
+}
+
+#inicio h1 {
+  font-size: 36px; 
+  margin: 0;
+}
+
+#inicio p {
+  font-size: 20px; 
+  line-height: 1.5;
+}
+
+#inicio .contact-button {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: rgb(236, 107, 47);
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 24px; 
+  border-radius: 4px;
+  font-size: 20px; 
+}
+
+/* Estilos para las demás secciones */
+#productos {
+  background-color: #f5f5f5;
+}
+
+#conocenos {
+  background-color: #f7f7f7;
+}
+
+#contacto {
+  background-color: #f9f9f9;
+}
+
+#iniciar-sesion {
+  background-color: #fafafa;
+}
+
+/* Estilos para el catálogo de productos */
+#productos {
+  background-color: #f5f5f5;
+  padding-top: 120px;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  width: calc(33.33% - 20px); 
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+  max-height: 150px;
+  margin-bottom: 10px;
+}
+
+.product h3 {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.product p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+#conocenos {
+  background-color: #f7f7f7;
+  padding: 60px 20px; 
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: calc(100vh - 60px);
+}
+
+#conocenos .image-container {
+  flex-basis: 50%;
+  text-align: center;
+}
+
+#conocenos img {
+  max-width: 100%;
+  height: auto;
+  max-height: 50vh;
+  margin-bottom: 20px;
+}
+
+#conocenos .text-container {
+  flex-basis: 50%;
+  text-align: left;
+}
+
+#conocenos h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
+#conocenos p {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+#contacto {
+  background-color: #f5f5f5;
+  padding: 60px 20px; /* Reducimos el espacio interno para reducir el tamaño de la sección */
+  text-align: center;
+}
+
+#contacto .contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact-info {
+  width: calc(50% - 20px); /* 2 columnas por fila */
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.contact-info h3 {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+nav ul li.login-button {
+  margin-left: auto;
+}
+
+nav ul li.login-button button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgb(236, 107, 47);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+nav ul li.login-button button:hover {
+  background-color: rgb(236, 107, 47);
+}
+
+/* Estilos para el filtro de productos */
+#buscador {
+  background-color: #f5f5f5;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+form label {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+form select, form input[type="number"] {
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+form button {
+  font-size: 18px;
+  background-color: rgb(236, 107, 47);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  width: calc(33.33% - 20px);
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+  max-height: 150px;
+  margin-bottom: 10px;
+}
+
+.product h3 {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.product p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}

@@ -1,0 +1,292 @@
+<!-- 
+* Copyright 2023 AnS
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cajero</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/sweetalert2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/material.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/material-design-iconic-font.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/main.css') }}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="admin/js/jquery-1.11.2.min.js") }}"><\/script>')</script>
+    <script src="{{ url_for('static', filename='admin/js/material.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='admin/js/sweetalert2.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='admin/js/jquery.mCustomScrollbar.concat.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='admin/js/main.js') }}" ></script>
+</head>
+<body>
+	<!-- Notifications area -->
+	<section class="full-width container-notifications">
+		<div class="full-width container-notifications">
+			<div class="full-width container-notifications-bg btn-Notification"></div>
+			<section class="NotificationArea">
+				<div class="full-width text-center NotificationArea-title tittles">Chat <i class="zmdi zmdi-close btn-Notification"></i></div>
+				<div class="chat-messages" id="chat-messages"></div>
+				<form class="chat-form" id="chat-form">
+					<div class="message-input-container">
+						<textarea id="message-input" placeholder="Escribe tu mensaje..." rows="1"></textarea>
+						<button type="submit">Enviar</button>
+					</div>
+				</form>
+		</section>
+	</section>
+	<!-- navLateral -->
+	<section class="full-width navLateral">
+		<div class="full-width navLateral-bg btn-menu"></div>
+		<div class="full-width navLateral-body">
+			<div class="full-width navLateral-body-logo text-center tittles">
+				<i class="zmdi zmdi-close btn-menu"></i> ANDYLU 
+			</div>
+			<figure class="full-width navLateral-body-tittle-menu">
+				<div>
+					<img src="{{url_for('static', filename='admin/assets/img/avatar-male.png')}}" alt="Avatar" class="img-responsive">
+				</div>
+				<figcaption>
+					<span>
+						AnS<br>
+						<small>Cajero</small>
+					</span>
+				</figcaption>
+			</figure>
+			<nav class="full-width">
+				<ul class="full-width list-unstyle menu-principal">
+					<li class="full-width">
+						<a href="#" class="full-width">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-view-dashboard"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								Inicio
+							</div>
+						</a>
+					</li>
+					<li class="full-width divider-menu-h"></li>
+					<li class="full-width">
+						<a href="#!" class="full-width btn-subMenu">
+							<div class="navLateral-body-cl">
+								<i class="zmdi zmdi-case"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								Compras
+							</div>
+							<span class="zmdi zmdi-chevron-left"></span>
+						</a>
+						<ul class="full-width menu-principal sub-menu-options">
+							<li class="full-width">
+								<a href="/nv_compra" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-card"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Registrar Compras
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="/ls_compra" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-label"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Lista Compras
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="/nv_producto" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-card"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Nuevo Producto
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="/ls_productos" class="full-width">
+									<div class="navLateral-body-cl">
+										<i class="zmdi zmdi-label"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										Lista Productos
+									</div>
+								</a>
+							</li>
+
+						<li class="full-width divider-menu-h"></li>
+						<li class="full-width">
+							<a href="/inventario2" class="full-width">
+								<div class="navLateral-body-cl">
+									<i class="zmdi zmdi-store"></i>
+								</div>
+								<div class="navLateral-body-cr">
+									Inventario
+								</div>
+							</a>
+						</li>
+						<li class="full-width divider-menu-h"></li>
+						<li class="full-width">
+							<a href="/help2" class="full-width">
+								<div class="navLateral-body-cl">
+									<i class="zmdi zmdi-wrench"></i>
+								</div>
+								<div class="navLateral-body-cr">
+									Ayuda
+								</div>
+							</a>
+						</li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+	<!-- pageContent -->
+	<section class="full-width pageContent">
+		<!-- navBar -->
+		<div class="full-width navBar">
+			<div class="full-width navBar-options">
+				<i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>	
+				<div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
+				<nav class="navBar-options-list">
+					<ul class="list-unstyle">
+						<li class="btn-Notification" id="notifications">
+							<i class="zmdi zmdi-notifications"></i>
+							<div class="mdl-tooltip" for="notifications">Notificaciones</div>
+						</li>
+						<li class="btn-exit" id="btn-exit">
+							<i class="zmdi zmdi-power"></i>
+							<div class="mdl-tooltip" for="btn-exit">Salir</div>
+						</li>
+						<li class="text-condensedLight noLink" ><small>AnS</small></li>
+						<li class="noLink">
+							<figure>
+								<img src="{{url_for('static', filename='admin/assets/img/avatar-male.png')}}" alt="Avatar" class="img-responsive">
+							</figure>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<section class="full-width text-center" style="padding: 40px 0;">
+			<h3 class="text-center tittles">Hola Empleado</h3>
+			<!-- Tiles -->
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						1 <br>
+						<small>Empleado</small>
+					</span>
+				</div>
+				<i class="zmdi zmdi-account tile-icon"></i>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						71<br>
+						<small>Ventas</small>
+					</span>
+				</div>
+				<i class="zmdi zmdi-accounts tile-icon"></i>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						7<br>
+						<small>Proveedores</small>
+					</span>
+				</div>
+				<i class="zmdi zmdi-truck tile-icon"></i>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						9<br>
+						<small>Categorias</small>
+					</span>
+				</div>
+				<i class="zmdi zmdi-label tile-icon"></i>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						121<br>
+						<small>Productos</small>
+					</span>
+				</div>
+				<i class="zmdi zmdi-washing-machine tile-icon"></i>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						47<br>
+						<small>Caja</small>
+					</span>
+				</div>
+				<i class="zmdi zmdi-shopping-cart tile-icon"></i>
+			</article>
+		</section>
+		<section class="full-width" style="margin: 30px 0;">
+			<h3 class="text-center tittles">Papeleria ANDYLU</h3>
+			<!-- TimeLine -->
+			<div id="timeline-c" class="timeline-c">
+				<div class="timeline-c-box">
+	                <div class="timeline-c-box-icon bg-info">
+	                    <i class="zmdi zmdi-twitter"></i>
+	                </div>
+	                <div class="timeline-c-box-content">
+	                    <h4 class="text-center text-condensedLight">Que somos</h4>
+	                    <p class="text-center">
+	                    	En "Andylu", somos una papelería apasionada por brindar soluciones integrales en artículos de papelería y suministros de oficina. Desde nuestro inicio en 2012, nos hemos comprometido a satisfacer las necesidades de nuestros clientes, ofreciendo productos de la más alta calidad y un servicio excepcional. Nuestra amplia experiencia en el mercado nos ha convertido en líderes del sector, destacando por nuestra dedicación y compromiso con la excelencia.
+	                    </p>
+	                    <span class="timeline-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>05-04-2016</span>
+	                </div>
+	            </div>
+				<div class="timeline-c-box">
+	                <div class="timeline-c-box-icon bg-success">
+	                    <i class="zmdi zmdi-whatsapp"></i>
+	                </div>
+	                <div class="timeline-c-box-content">
+	                    <h4 class="text-center text-condensedLight">Vision</h4>
+	                    <p class="text-center">
+	                    	Nuestra visión en "Andylu" es convertirnos en la papelería preferida de nuestra comunidad, expandiendo nuestra presencia a nivel nacional. Aspiramos a ser reconocidos por nuestra variedad de productos, precios competitivos y atención al cliente incomparable. Buscamos ser una empresa innovadora que se adapta constantemente a las nuevas tendencias y tecnologías, con el objetivo de seguir siendo líderes en el mercado y marcar la diferencia en la vida de nuestros clientes.
+	                    </p>
+	                    <span class="timeline-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>06-04-2016</span>
+	                </div>
+	            </div>
+	            <div class="timeline-c-box">
+	                <div class="timeline-c-box-icon bg-primary">
+	                    <i class="zmdi zmdi-facebook"></i>
+	                </div>
+	                <div class="timeline-c-box-content">
+	                    <h4 class="text-center text-condensedLight">Mision</h4>
+	                    <p class="text-center">
+	                    	Nuestra misión es proporcionar a nuestros clientes una experiencia de compra única y satisfactoria. Queremos ser el lugar al que recurran para encontrar todo lo que necesiten en papelería y suministros de oficina, ofreciendo productos de alta calidad y marcas reconocidas. Nos esforzamos por entender y superar las expectativas de nuestros clientes, brindando un servicio personalizado y eficiente. Además, estamos comprometidos con la responsabilidad social y el cuidado del medio ambiente, promoviendo prácticas sostenibles en nuestro negocio.
+	                    </p>
+	                    <span class="timeline-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>07-04-2016</span>
+	                </div>
+	            </div>
+	            <div class="timeline-c-box">
+	                <div class="timeline-c-box-icon bg-danger">
+	                    <i class="zmdi zmdi-youtube"></i>
+	                </div>
+	                <div class="timeline-c-box-content">
+	                    <h4 class="text-center text-condensedLight">Sobre Nosotros</h4>
+	                    <p class="text-center">
+	                    	En "Andylu", nos enorgullecemos de nuestra trayectoria como empresa. Nuestro equipo está conformado por personas apasionadas por lo que hacen, amantes del papel y la escritura, comprometidos con el objetivo de ofrecer soluciones a estudiantes, profesionales y amantes del arte. Nuestra amplia gama de productos incluye artículos de papelería, material escolar, insumos de oficina, productos de arte y mucho más. Estamos siempre en busca de la satisfacción total de nuestros clientes, brindando asesoramiento experto y atención personalizada en cada compra. Como parte de nuestra responsabilidad social, apoyamos iniciativas locales que promuevan la educación y el desarrollo de habilidades creativas.
+
+							En "Andylu", nos esforzamos por ser más que una papelería, somos un aliado en el camino del aprendizaje, la creatividad y el éxito personal y profesional de nuestros clientes.
+	                    </p>
+	                    <span class="timeline-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>08-04-2016</span>
+	                </div>
+	            </div>
+			</div>
+		</section>
+	</section>
+</body>
+</html>
